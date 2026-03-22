@@ -16,43 +16,43 @@ public class Player {
     @Column(name = "nation")
     private String nation;
 
-    @Column(name = "pos")
+    @Column(name = "position")
     private String pos;
 
     @Column(name = "age")
     private Integer age;
 
-    @Column(name = "mp")
+    @Column(name = "matches_played")
     private Integer mp;
 
     @Column(name = "starts")
     private Integer starts;
 
-    @Column(name = "min")
+    @Column(name = "minutes_played")
     private Double min;
 
-    @Column(name = "gls")
+    @Column(name = "goals")
     private Double gls;
 
-    @Column(name = "ast")
+    @Column(name = "assists")
     private Double ast;
 
-    @Column(name = "pk")
+    @Column(name = "penalties_scored")
     private Double pk;
 
-    @Column(name = "crdy")
+    @Column(name = "yellow_cards")
     private Double crdy;
 
-    @Column(name = "crdr")
+    @Column(name = "red_cards")
     private Double crdr;
 
-    @Column(name = "xg")
+    @Column(name = "expected_goals")
     private Double xg;
 
-    @Column(name = "xag")
+    @Column(name = "expected_assists")
     private Double xag;
 
-    @Column(name = "team")
+    @Column(name = "team_name")
     private String team;
 
     public Player() {

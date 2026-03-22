@@ -23,32 +23,38 @@ public class PlayerService {
 
     public List<Player> getPlayersFromTeam(String teamName) {
         return playerRepository.findAll().stream()
-                .filter(player -> teamName.equals(player.getTeam()))
+                .filter(player -> player.getTeam() != null &&
+                        player.getTeam().equalsIgnoreCase(teamName))
                 .collect(Collectors.toList());
     }
 
     public List<Player> getPlayersByName(String searchText) {
         return playerRepository.findAll().stream()
-                .filter(player -> player.getName().toLowerCase().contains(searchText.toLowerCase()))
+                .filter(player -> player.getName() != null &&
+                        player.getName().toLowerCase().contains(searchText.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
     public List<Player> getPlayersByPos(String searchText){
         return playerRepository.findAll().stream()
-                .filter(player ->
+                .filter(player -> player.getPos() != null &&
                         player.getPos().toLowerCase().contains(searchText.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
     public List<Player> getPlayersByNation(String searchText){
         return playerRepository.findAll().stream()
-                .filter(player -> player.getNation().toLowerCase().contains(searchText.toLowerCase()))
+                .filter(player -> player.getNation() != null &&
+                        player.getNation().toLowerCase().contains(searchText.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
     public List<Player> getPlayersByTeamAndPosition(String team, String position){
         return playerRepository.findAll().stream()
-                .filter(player -> team.equals(player.getTeam()) && position.equals(player.getPos()))
+                .filter(player -> player.getTeam() != null &&
+                        player.getPos() != null &&
+                        player.getTeam().equalsIgnoreCase(team) &&
+                        player.getPos().equalsIgnoreCase(position))
                 .collect(Collectors.toList());
     }
 
@@ -66,6 +72,17 @@ public class PlayerService {
             playerToUpdate.setTeam(updatedPlayer.getTeam());
             playerToUpdate.setPos(updatedPlayer.getPos());
             playerToUpdate.setNation(updatedPlayer.getNation());
+            playerToUpdate.setAge(updatedPlayer.getAge());
+            playerToUpdate.setMp(updatedPlayer.getMp());
+            playerToUpdate.setStarts(updatedPlayer.getStarts());
+            playerToUpdate.setMin(updatedPlayer.getMin());
+            playerToUpdate.setGls(updatedPlayer.getGls());
+            playerToUpdate.setAst(updatedPlayer.getAst());
+            playerToUpdate.setPk(updatedPlayer.getPk());
+            playerToUpdate.setCrdy(updatedPlayer.getCrdy());
+            playerToUpdate.setCrdr(updatedPlayer.getCrdr());
+            playerToUpdate.setXg(updatedPlayer.getXg());
+            playerToUpdate.setXag(updatedPlayer.getXag());
 
             playerRepository.save(playerToUpdate);
             return playerToUpdate;
