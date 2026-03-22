@@ -65,4 +65,14 @@ public class PlayerController {
         playerService.deletePlayer(playerName);
         return new ResponseEntity<>("Player deleted successfully", HttpStatus.OK);
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "API WORKING";
+    }
+
+    @GetMapping("/debug")
+    public List<String> debug() {
+        return List.of("Messi", "Ronaldo");
+    }
 }
